@@ -1,6 +1,6 @@
 # Maintainer: anekos <anekos@snca.net>
 pkgname=growl-for-linux-git
-pkgver=20111205
+pkgver=20120315
 pkgrel=1
 pkgdesc="Growl for Linux"
 url="http://mattn.github.com/growl-for-linux/"
@@ -12,6 +12,7 @@ makedepends=()
 conflicts=('growl-for-linux')
 replaces=()
 backup=()
+options=('!libtool')
 
 source=()
 md5sums=()
