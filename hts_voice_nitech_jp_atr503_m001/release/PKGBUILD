@@ -1,0 +1,27 @@
+# Maintainer: anekos <anekos@snca.net>
+pkgname=hts_voice_nitech_jp_atr503_m001
+pkgver=1.04
+pkgrel=1
+pkgdesc="HTS voice for Open JTalk trained by using the Nitech Japanese Speech Database."
+url="http://open-jtalk.sourceforge.net/"
+arch=('i686' 'x86_64')
+license=('CC Attribution 3.0')
+depends=()
+optdepends=()
+makedepends=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+
+source=('http://downloads.sourceforge.net/open-jtalk/hts_voice_nitech_jp_atr503_m001-1.04.tar.gz')
+md5sums=('33516a5e1b13100852b02dc95a688419')
+_name="nitech_jp_atr503_m001"
+
+package () {
+  echo "$pkgname-$pkgver"
+  install -d "$pkgdir/usr/share/hts_voice/" || return 1
+  mv "$pkgname-$pkgver/" "$pkgdir/usr/share/hts_voice/$_name" || return 1
+}
+
+# vim:set ts=2 sw=2 et:

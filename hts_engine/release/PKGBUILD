@@ -1,0 +1,35 @@
+# Maintainer: anekos <anekos@snca.net>
+pkgname=hts_engine
+pkgver=1.06
+pkgrel=1
+pkgdesc="The hts_engine is software to synthesize speech waveform from HMMs trained by the HMM-based speech synthesis system (HTS)."
+url="http://hts-engine.sourceforge.net/"
+arch=('i686' 'x86_64')
+license=('BSD')
+depends=()
+optdepends=()
+makedepends=()
+conflicts=()
+replaces=()
+backup=()
+options=('!libtool')
+
+source=('http://sourceforge.net/projects/hts-engine/files/hts_engine%20API/hts_engine_API-1.06/hts_engine_API-1.06.tar.gz/download')
+md5sums=('fe71e4f30f6cfa22f97625fd7bfe3d9a')
+
+_tardir="hts_engine_API-$pkgver"
+
+build () {
+  cd $srcdir
+  tar -xf download
+  cd $_tardir
+
+  ./configure --prefix=/usr && make
+}
+
+package () {
+  cd "$srcdir/$_tardir"
+  make install DESTDIR="$pkgdir" prefix=/usr
+}
+
+# vim:set ts=2 sw=2 et:

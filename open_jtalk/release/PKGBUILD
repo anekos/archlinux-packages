@@ -1,0 +1,37 @@
+# Maintainer: anekos <anekos@snca.net>
+pkgname=open_jtalk
+pkgver=1.05
+pkgrel=1
+pkgdesc="Open JTalk is a Japanese text-to-speech system."
+url="http://open-jtalk.sourceforge.net/"
+arch=('i686' 'x86_64')
+license=('BSD')
+depends=('hts_engine')
+optdepends=()
+makedepends=('hts_engine')
+conflicts=()
+replaces=()
+backup=()
+options=()
+
+source=('http://downloads.sourceforge.net/open-jtalk/open_jtalk-1.05.tar.gz')
+md5sums=('deb83a4070367869485fe566f5adec00')
+
+build () {
+  cd $srcdir
+  cd "$pkgname-$pkgver"
+
+  ./configure \
+    --with-hts-engine-header-path=/usr/include \
+    --with-hts-engine-library-path=/usr/lib \
+    --prefix=/usr \
+    --with-charset=UTF-8 \
+  && make
+}
+
+package () {
+  cd "$pkgname-$pkgver"
+  make install DESTDIR="$pkgdir" prefix=/usr
+}
+
+# vim:set ts=2 sw=2 et:
