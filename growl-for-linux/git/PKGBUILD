@@ -1,6 +1,6 @@
 # Maintainer: anekos <anekos@snca.net>
 pkgname=growl-for-linux-git
-pkgver=20120315
+pkgver=20120422
 pkgrel=1
 pkgdesc="Growl for Linux"
 url="http://mattn.github.com/growl-for-linux/"
