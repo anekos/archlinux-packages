@@ -1,7 +1,7 @@
 # Maintainer: anekos <anekos@snca.net>
 pkgname=growl-for-linux
 pkgver=0.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Growl for Linux"
 url="http://mattn.github.com/growl-for-linux/"
 arch=('i686' 'x86_64')
@@ -22,6 +22,7 @@ dirname="mattn-growl-for-linux-b7caa00"
 build () {
   cd "$srcdir/$dirname"
 
+  export LDFLAGS="$LDFLAGS -lgmodule-2.0 -lgthread-2.0"
   ./autogen.sh
   ./configure --prefix=/usr && make
 }
