@@ -6,9 +6,9 @@ pkgdesc='a unix command for viewing images'
 url='https://github.com/itchyny/cam'
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('gcc')
+depends=()
 optdepends=()
-makedepends=()
+makedepends=('gcc')
 conflicts=()
 replaces=()
 backup=()
@@ -34,6 +34,10 @@ build () {
 package () {
   cd $srcdir/$_gitname
   make install
+  
+  install -dm0755 "${pkgdir}/usr/share/zsh/site-functions"
+  install -m0644 "${srcdir}"/"${_gitname}"/zsh-completion/_cam "${pkgdir}/usr/share/zsh/site-functions"
 }
+
 
 # vim:set ts=2 sw=2 et:
