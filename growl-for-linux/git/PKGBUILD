@@ -1,6 +1,6 @@
 # Maintainer: anekos <anekos@snca.net>
 pkgname=growl-for-linux-git
-pkgver=20121104
+pkgver=20130319
 pkgrel=1
 pkgdesc="Growl for Linux"
 url="http://mattn.github.com/growl-for-linux/"
@@ -8,14 +8,9 @@ arch=('i686' 'x86_64')
 license=('BSD')
 depends=('git' 'openssl' 'curl' 'gtk2' 'sqlite3' 'dbus-glib' 'desktop-file-utils')
 optdepends=('libnotify')
-makedepends=()
+makedepends=('git')
 conflicts=('growl-for-linux')
-replaces=()
-backup=()
 options=('!libtool')
-
-source=()
-md5sums=()
 
 _gitroot="https://github.com/mattn/growl-for-linux.git"
 _gitname="growl-for-linux"
@@ -23,12 +18,22 @@ _gitname="growl-for-linux"
 build () {
   cd $srcdir
 
+  msg "Connecting to GIT server...."
+
   if [ -d "$_gitname" ]
   then
     cd $_gitname && git pull origin
+    msg "The local files are updated."
   else
     git clone $_gitroot && cd $_gitname
   fi
+
+  msg "GIT checkout done or server timeout"
+  msg "Starting build..."
+
+  rm -rf "$srcdir/$_gitname-build"
+  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
 
   export LDFLAGS="$LDFLAGS -lgmodule-2.0"
   export LIBNOTIFY_LIBS="-lnotify"
@@ -39,6 +44,8 @@ build () {
 package () {
   cd $srcdir/$_gitname
   make install DESTDIR="$pkgdir" prefix=/usr
+
+  install -Dm0644 "$srcdir/$_gitname-build/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 # vim:set ts=2 sw=2 et:
