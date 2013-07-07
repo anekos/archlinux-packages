@@ -1,0 +1,30 @@
+# Maintainer: anekos <anekos@snca.net>
+pkgname=matrixgl
+pkgver="2.3"
+pkgrel=1
+pkgdesc="The Matrix Screensaver"
+url="http://www.doublecreations.com/projects/matrixgl/"
+arch=('i686' 'x86_64')
+license=('BSD')
+depends=()
+makedepends=('gcc' 'glu' 'mesa' 'libx11' 'xscreensaver')
+conflicts=()
+replaces=()
+backup=()
+
+source=("${pkgname}-${pkgver}.tar.gz::http://sourceforge.net/projects/matrixgl/files/latest/download?source=files")
+md5sums=('13facd7c06a750d4e5de6850aeb58d0c')
+
+build () {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr
+  make
+}
+
+package () {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="$pkgdir/" install
+  echo DONE
+}
+
+# vim:set ts=2 sw=2 et:
