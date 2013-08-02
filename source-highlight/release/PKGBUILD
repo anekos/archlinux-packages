@@ -1,0 +1,28 @@
+# Maintainer: anekos <anekos@snca.net>
+pkgname=source-highlight
+pkgver="3.1.7"
+pkgrel=1
+pkgdesc="This program, given a source file, produces a document with syntax highlighting."
+url="http://www.gnu.org/software/src-highlite/"
+arch=('i686' 'x86_64')
+license=('BSD')
+depends=()
+optdepends=()
+makedepends=('gcc' 'autoconf')
+conflicts=()
+replaces=()
+backup=()
+
+source=("ftp://ftp.gnu.org/gnu/src-highlite/source-highlight-${pkgver}.tar.gz")
+md5sums=('0ff81588d3536b4c4e571122ba940595')
+
+package () {
+  cd "${srcdir}/source-highlight-${pkgver}"
+  autoreconf -i
+  ./configure --prefix=/usr
+  make
+  make install DESTDIR="$pkgdir" prefix=/usr
+}
+
+
+# vim:set ts=2 sw=2 et:
