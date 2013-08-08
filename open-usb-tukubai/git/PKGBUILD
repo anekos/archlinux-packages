@@ -1,0 +1,32 @@
+# Maintainer: anekos <anekos@snca.net>
+_pkgname=open-usb-tukubai
+pkgname=$_pkgname-git
+pkgver=20130809
+pkgrel=1
+pkgdesc="Open USB Tukubai"
+url="https://github.com/usp-engineers-community/Open-usp-Tukubai"
+arch=('i686' 'x86_64')
+license=('MIT')
+depends=('python')
+makedepends=('git')
+source=("$_pkgname::git+https://github.com/usp-engineers-community/Open-usp-Tukubai.git")
+md5sums=('SKIP')
+
+package () {
+  cd $srcdir/$_pkgname
+  git reset --hard HEAD
+
+  sed -i.bak 's/python$/python2/' COMMANDS/* && rm COMMANDS/*.bak
+
+  sed -i.bak 's/tcat/vcat/' Makefile && rm Makefile.bak
+  if [ -f /usr/bin/tcat ]
+  then
+    mv COMMANDS/tcat COMMANDS/vcat
+    mv MANUALHTML/tcat.html MANUALHTML/vcat.html
+    mv MANUAL/tcat.txt MANUAL/vcat.txt
+  fi
+
+  make install LOCALBASE="$pkgdir"
+}
+
+# vim:set ts=2 sw=2 et:
