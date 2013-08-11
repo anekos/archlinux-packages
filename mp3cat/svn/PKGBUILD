@@ -1,0 +1,20 @@
+# Maintainer: anekos <anekos@snca.net>
+_pkgname=mp3cat
+pkgname=$_pkgname-svn
+pkgver=20130811
+pkgrel=1
+pkgdesc="Concatnate mp3 files"
+url="http://tomclegg.net/mp3cat"
+arch=('i686' 'x86_64')
+license=('GPL3')
+makedepends=('subversion')
+source=("$_pkgname::svn+http://svn.tomclegg.net/repos/trunk/mp3cat")
+sha256sums=('SKIP')
+
+package () {
+  cd $srcdir/$_pkgname
+
+  make install PREFIX="$pkgdir/usr"
+}
+
+# vim:set ts=2 sw=2 et:
