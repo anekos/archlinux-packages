@@ -1,0 +1,18 @@
+# Maintainer: anekos <anekos@snca.net>
+pkgname=utskushi-mincho-font
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Utsukushi Micho (ttf and otf)"
+arch=('any')
+license=('custom:http://ipafont.ipa.go.jp/index.html')
+url="http://www.flopdesign.com/freefont/utsukushi-mincho-font.html"
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+install=font.install
+source=("http://www.flopdesign.com/images/datafont/UtsukushiMincho_FONT.zip")
+sha256sums=('9722575270ac586257e68fbff47a19eeba3f581271245cec8d871e4ef3113fe1')
+
+package() {
+  cd "${srcdir}/UtsukushiMincho_FONT"
+  install -Dm644 'TrueType/02UtsukushiMincho.ttf' "${pkgdir}/usr/share/fonts/TTF/02UtsukushiMincho.ttf"
+  install -Dm644 'Utsukushi.otf' "${pkgdir}/usr/share/fonts/OTF/Utsukushi.otf"
+}
