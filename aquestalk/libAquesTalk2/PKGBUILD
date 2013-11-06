@@ -1,0 +1,40 @@
+# Maintainer: anekos <anekos@snca.net>
+pkgname=libAquesTalk2
+pkgver=2.3.0
+pkgrel=2
+pkgdesc="Synthesized speech library"
+url="http://www.a-quest.com/download/index.html"
+arch=('x86_64')
+license=('GPLv3')
+depends=()
+optdepends=()
+makedepends=()
+conflicts=()
+replaces=()
+backup=()
+
+_pkgname="aqtk2-lnx-eva"
+_sover="2.3"
+_soverm="2"
+
+source=("http://www.a-quest.com/download/package/${_pkgname}_${pkgver//./}.zip")
+md5sums=('4b0641066a826d0be7a016a162ab4043')
+
+package() {
+  cd "${srcdir}/${_pkgname}"
+
+  mkdir -p ${pkgdir}/usr/include
+  mkdir -p ${pkgdir}/usr/lib
+  mkdir -p ${pkgdir}/usr/share/libAquesTalk2
+
+  cp lib64/AquesTalk2.h ${pkgdir}/usr/include
+  cp lib64/libAquesTalk2Eva.so.${_sover} ${pkgdir}/usr/lib/
+  cp phont/*.phont ${pkgdir}/usr/share/libAquesTalk2
+
+  chmod -x ${pkgdir}/usr/share/libAquesTalk2/*.phont
+
+  ln -s /usr/lib/libAquesTalk2Eva.so.${_sover} ${pkgdir}/usr/lib/libAquesTalk2.so.${_soverm}
+  ln -s /usr/lib/libAquesTalk2.so.${_soverm} ${pkgdir}/usr/lib/libAquesTalk2.so
+}
+
+# vim:set ts=2 sw=2 et:

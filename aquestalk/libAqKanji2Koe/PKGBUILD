@@ -1,0 +1,40 @@
+# Maintainer: anekos <anekos@snca.net>
+pkgname=libAqKanji2Koe
+pkgver=2.0.1
+pkgrel=2
+pkgdesc="Convert kanji-kana text to AquesTalk2 formated text."
+url="http://www.a-quest.com/download/index.html"
+arch=('x86_64')
+license=('GPLv3')
+depends=('libAquesTalk2')
+optdepends=()
+makedepends=()
+conflicts=()
+replaces=()
+backup=()
+
+_pkgname="aqk2k_lnx_eva"
+_sover="1.0"
+_soverm="1"
+
+source=("http://www.a-quest.com/download/package/${_pkgname}_${pkgver//./}.zip")
+md5sums=('b875a7fc815d03b59435e4c6de230077')
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+
+  mkdir -p ${pkgdir}/usr/include
+  mkdir -p ${pkgdir}/usr/lib
+  mkdir -p ${pkgdir}/usr/share/libAqKanji2Koe
+
+  cp lib64/AqKanji2Koe.h ${pkgdir}/usr/include/
+  cp lib64/libAqKanji2Koe.so.${_sover} ${pkgdir}/usr/lib/
+  cp aq_dic/*.* ${pkgdir}/usr/share/libAqKanji2Koe
+
+  chmod -x ${pkgdir}/usr/share/libAqKanji2Koe/*.*
+
+  ln -s /usr/lib/libAqKanji2Koe.so.${_sover} ${pkgdir}/usr/lib/libAqKanji2Koe.so.${_soverm}
+  ln -s /usr/lib/libAqKanji2Koe.so.${_soverm} ${pkgdir}/usr/lib/libAqKanji2Koe.so
+}
+
+# vim:set ts=2 sw=2 et:
