@@ -1,6 +1,6 @@
 # Maintainer: anekos <anekos@snca.net>
 pkgname=libAqKanji2Koe
-pkgver=2.0.1
+pkgver=1.0.0
 pkgrel=2
 pkgdesc="Convert kanji-kana text to AquesTalk2 formated text."
 url="http://www.a-quest.com/download/index.html"
@@ -18,7 +18,7 @@ _sover="1.0"
 _soverm="1"
 
 source=("http://www.a-quest.com/download/package/${_pkgname}_${pkgver//./}.zip")
-md5sums=('b875a7fc815d03b59435e4c6de230077')
+sha256sums=('b5342cc4b55577bea8d29b18adefc07b89e48cc8c3efb9dbcb65cb95dd0ca6ee')
 
 build() {
   cd "${srcdir}/${_pkgname}"
