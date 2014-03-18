@@ -1,12 +1,13 @@
 # Maintainer: anekos <anekos@snca.net>
 pkgname=my-fonts
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="My Selection Fonts"
 arch=('any')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 install=font.install
 source=( \
+  'http://www.flopdesign.com/images/datafont/UtsukushiMincho-FONT.zip' \
   'http://www.flopdesign.com/images/datafont/FLOPDESIGN-FONT.zip' \
   'http://downloads.sourceforge.net/project/adobe-blank.adobe/AdobeBlank.otf' \
   'http://banban-font.com/images/amatanoyoru.zip' \
@@ -14,6 +15,7 @@ source=( \
   'wlcmaru2004emoji4320.lzh::http://sourceforge.jp/frs/redir.php?m=jaist&f=%2Fjis2004%2F59399%2Fwlcmaru2004emoji4320.lzh' \
 )
 sha256sums=( \
+  '82a57387df7247712f88f0284fc742b226d80f02e03cbbdd45ac052fb08fa5e8' \
   '8a8f70cc33b5c46c9bfc1a241133d84cd82a39b26fc126eed2f8a2dda99f5f69' \
   'a619a2957f2027aa6b7ae4a6248bd84773c071273fe2d00daa602b090370d314' \
   '18974cd157aea5d5e78f70381dd80a86eef3628e15353e344e0f06c319cfc5b0' \
@@ -39,6 +41,8 @@ install_font () {
 }
 
 package() {
+  install_font UtsukushiMincho-FONT/TrueType/UtsukushiMincho.ttf
+  install_font UtsukushiMincho-FONT/UtsukushiFONT.otf
   install_font FLOPDESIGN-FONT/TrueType/FLOPDesignFont.ttf
   install_font FLOPDESIGN-FONT/FlopDesignFONT.otf
   install_font AdobeBlank.otf
