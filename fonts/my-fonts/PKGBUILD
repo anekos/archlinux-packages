@@ -1,6 +1,6 @@
 # Maintainer: anekos <anekos@snca.net>
 pkgname=my-fonts
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="My Selection Fonts"
 arch=('any')
@@ -13,6 +13,9 @@ source=( \
   'http://banban-font.com/images/amatanoyoru.zip' \
   'wlmaru2004emoji4320.lzh::http://sourceforge.jp/frs/redir.php?m=jaist&f=%2Fjis2004%2F59398%2Fwlmaru2004emoji4320.lzh' \
   'wlcmaru2004emoji4320.lzh::http://sourceforge.jp/frs/redir.php?m=jaist&f=%2Fjis2004%2F59399%2Fwlcmaru2004emoji4320.lzh' \
+  'http://tanukiweb.sakura.ne.jp/download/JiyunoTsubasa_1_01.zip' \
+  'http://tanukiweb.sakura.ne.jp/download/TanukiMagic_1_11.zip' \
+  'http://tanukiweb.sakura.ne.jp/download/yojo_1_00.zip' \
 )
 sha256sums=( \
   '82a57387df7247712f88f0284fc742b226d80f02e03cbbdd45ac052fb08fa5e8' \
@@ -21,6 +24,9 @@ sha256sums=( \
   '18974cd157aea5d5e78f70381dd80a86eef3628e15353e344e0f06c319cfc5b0' \
   '16d0acea2cc7d5ada1079c2368f8b46afec4a28365e649aa227f2ef9dab9584b' \
   '59e3b6cbab9b0f23787d5a69334d77cdd4c4400bb0d783891a7be4cdc41500ad' \
+  '186b4a2c572847bbe2e5924e26a2225fe9a171d3e4d74b89d46b0b85b956c1dd' \
+  '7ddb718c9d25199ccbabe957ca4b2394264ec59a0a9421ec1ee6c850bf324133' \
+  'cc78e0707b4a3c7aee183f3c7806a29dd1b996f1dabbb9a79bf6d27d36a1a380' \
 )
 
 install_font () {
@@ -41,6 +47,9 @@ install_font () {
 }
 
 package() {
+  install_font JiyunoTsubasa.ttf
+  install_font TanukiMagic.ttf
+  install_font yojo.ttf
   install_font UtsukushiMincho-FONT/TrueType/UtsukushiMincho.ttf
   install_font UtsukushiMincho-FONT/UtsukushiFONT.otf
   install_font FLOPDESIGN-FONT/TrueType/FLOPDesignFont.ttf
