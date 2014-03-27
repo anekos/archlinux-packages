@@ -9,8 +9,8 @@ url="https://github.com/y-ken/bonnie"
 license=('GPL')
 depends=('glibc')
 makedepends=('git')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=('bonnie++')
+conflicts=("$_pkgname" 'bonnie++')
 source=("$_pkgname::git+https://github.com/y-ken/bonnie.git")
 md5sums=('SKIP')
 
