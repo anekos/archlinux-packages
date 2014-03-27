@@ -1,6 +1,6 @@
 # Maintainer: anekos <anekos@snca.net>
 pkgname=my-fonts
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="My Selection Fonts"
 arch=('any')
@@ -16,6 +16,8 @@ source=( \
   'http://tanukiweb.sakura.ne.jp/download/JiyunoTsubasa_1_01.zip' \
   'http://tanukiweb.sakura.ne.jp/download/TanukiMagic_1_11.zip' \
   'http://tanukiweb.sakura.ne.jp/download/yojo_1_00.zip' \
+  'http://freefonts.jp/dl_c62xbza7jt/ki_kokumin.zip' \
+  'http://freefonts.jp/dl_c62xbza7jt/ki_kokugo.zip' \
 )
 sha256sums=( \
   '82a57387df7247712f88f0284fc742b226d80f02e03cbbdd45ac052fb08fa5e8' \
@@ -27,11 +29,13 @@ sha256sums=( \
   '186b4a2c572847bbe2e5924e26a2225fe9a171d3e4d74b89d46b0b85b956c1dd' \
   '7ddb718c9d25199ccbabe957ca4b2394264ec59a0a9421ec1ee6c850bf324133' \
   'cc78e0707b4a3c7aee183f3c7806a29dd1b996f1dabbb9a79bf6d27d36a1a380' \
+  '11f735a93f1d4a4a1f03cc40634e7d44aadbcdba3bea7dc90e3fcd82d255d58c' \
+  'b3cca80fe3290893cf647c290a454c2e16ab4c64b0cf40dbba128573c9e9c9e6' \
 )
 
 install_font () {
   local filename="$(basename "$1")"
-  case "${filename#*.}" in
+  case "${filename##*.}" in
     ttf)
       local dir=TTF
       ;;
@@ -58,4 +62,6 @@ package() {
   install_font amatanoyoru.otf
   install_font wlcmaru2004emoji.ttf
   install_font wlmaru2004emoji.ttf
+  install_font ki_kokumin/font_1_kokumr_1.00_rls.ttf
+  install_font ki_kokugo/font_1_kokugl_1.00_rls.ttf
 }
