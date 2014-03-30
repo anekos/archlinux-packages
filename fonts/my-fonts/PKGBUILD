@@ -71,3 +71,5 @@ package() {
   install_font haranyan/haranyan.ttf
   install_font DiaPro-Regular.otf
 }
+
+# DiaPro - http://but.tw/font/
