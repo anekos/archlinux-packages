@@ -1,6 +1,6 @@
 # Maintainer: anekos <anekos@snca.net>
 pkgname=my-fonts
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="My Selection Fonts"
 arch=('any')
@@ -33,7 +33,7 @@ sha256sums=( \
   'cc78e0707b4a3c7aee183f3c7806a29dd1b996f1dabbb9a79bf6d27d36a1a380' \
   '11f735a93f1d4a4a1f03cc40634e7d44aadbcdba3bea7dc90e3fcd82d255d58c' \
   'b3cca80fe3290893cf647c290a454c2e16ab4c64b0cf40dbba128573c9e9c9e6' \
-  '747b278f89d5a44609c7712eacb983d1af3edd340061e19129a28f1dbe423422' \
+  '53806d8cfc1fb80858aaf16bb107e2b2af11af358f0c512db2a9204995dc6196' \
   '4266a21352fa3b9a02215644ac4abc9fcee57de09fca8adde7a4205d8add80c0' \
 )
 
