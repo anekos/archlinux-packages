@@ -1,0 +1,33 @@
+# Maintainer: anekos <anekos@snca.net>
+pkgname=tpipe
+pkgver=1.6
+pkgrel=1
+pkgdesc="Duplicate standard input and/or standard ouput"
+url="http://www.eurogaran.com/downloads/tpipe/"
+arch=('i686' 'x86_64')
+license=('GPLv2')
+depends=()
+makedepends=('gcc')
+conflicts=()
+replaces=()
+backup=()
+
+source=("http://www.eurogaran.com/downloads/tpipe/tpipe-${pkgver}.tar.gz")
+sha256sums=('d7eac07b862399d6d92a854c49635f9b2b24bda436c5c426f2eca59857168795')
+
+_mandir=/usr/share/man/man1
+_bindir=/usr/bin
+
+build () {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make
+}
+
+package () {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  mkdir -p "${pkgdir}/${_mandir}"
+  mkdir -p "${pkgdir}/${_bindir}"
+  make PREFIX="${pkgdir}" BINDIR="${pkgdir}/${_bindir}" MANDIR="${pkgdir}/${_mandir}" install
+}
+
+# vim: set ts=2 sw=2 et :
