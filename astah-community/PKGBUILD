@@ -1,0 +1,31 @@
+# Maintainer: anekos <anekos@snca.net>
+pkgname=astah-community
+pkgver="6.8.0"
+pkgrel=1
+pkgdesc="UML and Modeling Tools | Astah.net"
+url="http://astah.net/"
+arch=('i686' 'x86_64')
+license=('custom')
+depends=('java-environment>=7')
+makedepends=()
+conflicts=()
+replaces=()
+backup=()
+
+source=('astah' "http://members.change-vision.com/files/_s58XQfFeSMMphkVSueYKS2ihnhaqwqGr/astah_community/6_8_0/astah-community-6_8_0-d254c5.zip")
+sha256sums=('ac82a06412e39e2156819f2ae82c910b31c98f82c5587a8390acac9d0d3acb1d' 'b19ebc2b9a2f9ff5ed549ea76c490029cdb705977c5dcae74db48284700aafe9')
+
+build () {
+  cd "${srcdir}/astah_community"
+}
+
+package () {
+  install -dm755 "${pkgdir}/usr/bin/"
+  install -m755 astah "${pkgdir}/usr/bin/"
+
+  cd "${srcdir}/astah_community"
+  install -dm755 "${pkgdir}"/usr/share/astah-community
+  cp -r * "${pkgdir}"/usr/share/astah-community
+}
+
+# vim:set ts=2 sw=2 et:

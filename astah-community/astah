@@ -1,0 +1,6 @@
+#!/bin/sh
+
+ASTAH_JAR=/usr/share/astah-community/astah-community.jar
+
+java ${JAVA_OPTS:--Xms16m -Xmx384m} -jar $ASTAH_JAR  "$1" $2 $3
+
