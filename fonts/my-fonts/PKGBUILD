@@ -1,10 +1,11 @@
 # Maintainer: anekos <anekos@snca.net>
 pkgname=my-fonts
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="My Selection Fonts"
 arch=('any')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+license=('nazo')
 install=font.install
 source=( \
   'http://www.flopdesign.com/images/datafont/UtsukushiMincho-FONT.zip' \
@@ -20,6 +21,8 @@ source=( \
   'http://freefonts.jp/dl_c62xbza7jt/ki_kokugo.zip' \
   'http://inatsuka.hp2.jp/extra/haranyan/haranyan.zip' \
   'http://but.tw/font/files/DiaPro.zip' \
+  'http://www.flopdesign.com/images/datafont/Alice_Font.zip' \
+  'http://www.flopdesign.com/images/datafont/flopdesign-op/SmartFontUI.zip' \
 )
 sha256sums=( \
   '82a57387df7247712f88f0284fc742b226d80f02e03cbbdd45ac052fb08fa5e8' \
@@ -35,10 +38,13 @@ sha256sums=( \
   'b3cca80fe3290893cf647c290a454c2e16ab4c64b0cf40dbba128573c9e9c9e6' \
   '53806d8cfc1fb80858aaf16bb107e2b2af11af358f0c512db2a9204995dc6196' \
   '4266a21352fa3b9a02215644ac4abc9fcee57de09fca8adde7a4205d8add80c0' \
+  'dbea899faee2cc3b5dab46f86a80080ffe0045e1f4aa24ebc13c42542c24978d' \
+  '839ec730a8946ae15b762302e44a5497c29c2e89e05672dfa93260f0c35dfa5c' \
 )
 
 install_font () {
   local filename="$(basename "$1")"
+  local dest="${2:-$filename}"
   case "${filename##*.}" in
     ttf)
       local dir=TTF
@@ -51,7 +57,7 @@ install_font () {
       return 1
   esac
 
-  install -Dm644 "$1" "${pkgdir}/usr/share/fonts/${dir}/${filename}"
+  install -Dm644 "$1" "${pkgdir}/usr/share/fonts/${dir}/${dest}"
 }
 
 package() {
@@ -70,6 +76,8 @@ package() {
   install_font ki_kokugo/font_1_kokugl_1.00_rls.ttf
   install_font haranyan/haranyan.ttf
   install_font DiaPro-Regular.otf
+  install_font Alice_Font/Alice.otf
+  install_font SmartFontUI/*.otf SmartFontUI.otf
 }
 
 # DiaPro - http://but.tw/font/
