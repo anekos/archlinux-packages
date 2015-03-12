@@ -23,6 +23,7 @@ source=( \
   'http://but.tw/font/files/DiaPro.zip' \
   'http://www.flopdesign.com/images/datafont/Alice_Font.zip' \
   'http://www.flopdesign.com/images/datafont/flopdesign-op/SmartFontUI.zip' \
+  'http://www.marksimonson.com/assets/content/fonts/AnonymousPro-1.002.zip' \
 )
 sha256sums=( \
   '82a57387df7247712f88f0284fc742b226d80f02e03cbbdd45ac052fb08fa5e8' \
@@ -40,6 +41,7 @@ sha256sums=( \
   '4266a21352fa3b9a02215644ac4abc9fcee57de09fca8adde7a4205d8add80c0' \
   'dbea899faee2cc3b5dab46f86a80080ffe0045e1f4aa24ebc13c42542c24978d' \
   '839ec730a8946ae15b762302e44a5497c29c2e89e05672dfa93260f0c35dfa5c' \
+  '86665847a51cdfb58a1e1dfd8b1ba33f183485affe50b53e3304f63d3d3552ab' \
 )
 
 install_font () {
