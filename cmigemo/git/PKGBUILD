@@ -1,6 +1,7 @@
 # Maintainer: anekos <anekos@snca.net>
-pkgname=cmigemo-hg
-pkgver=20120921
+pkgname=cmigemo-git
+_pkgname=cmigemo
+pkgver=20150324
 pkgrel=1
 pkgdesc="C/Migemo - Migemo library implemented in C"
 url="http://www.kaoriya.net/"
@@ -8,34 +9,22 @@ arch=('i686' 'x86_64')
 license=('BSD')
 depends=()
 optdepends=()
-makedepends=('mercurial' 'nkf')
+makedepends=('git' 'nkf')
 conflicts=('cmigemo')
 replaces=()
 backup=()
-
-source=('configure.patch')
-md5sums=('0f163e24a93bdc3694475b284393fd4b')
-
-_reposroot="https://code.google.com/p/cmigemo/"
-_reposname="cmigemo"
+source=('configure.patch' "$_pkgname::git+https://github.com/koron/cmigemo.git")
+sha256sums=('ccf9296c47b7dc64d35b2ac726d1e50f979d35dbcbfd2b20cd9756409459cb31' 'SKIP')
 
 build () {
-  cd $srcdir
-
-  if [ -d "$_reposname" ]
-  then
-    cd $_reposname && hg revert --all && hg pull -u
-  else
-    hg clone $_reposroot && cd $_reposname
-  fi
-
+  cd "$srcdir/$_pkgname"
   patch < ../../configure.patch
 
   ./configure && make gcc && make gcc-dict
 }
 
 package () {
-  cd $srcdir/$_reposname
+  cd $srcdir/$_pkgname
   make gcc-install prefix=${pkgdir}/usr docdir=${pkgdir}/usr/share/doc/migemo
 }
 
