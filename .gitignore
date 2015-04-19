@@ -2,4 +2,15 @@ src/
 pkg/
 *.xz
 *.gz
-cmigemo/git/cmigemo
+*.otf
+*.zip
+*.lzh
+*.7z
+
+cam/git/cam
+growl-for-linux/git/growl-for-linux/
+linux-track/
+mp3cat/svn/mp3cat/
+percol/git/percol/
+private/pebble-sdk/
+v2c-r/
