@@ -25,9 +25,9 @@ fi
 echo "Current version: $topvar.$patchlevel"
 git diff --stat
 
-makepkg -f
-
 rm *.tar.xz
+
+makepkg -f
 
 sudo pacman -U gvim-python3-$topvar.$patchlevel-*.tar.xz vim-runtime-$topvar.$patchlevel*.tar.xz
 
@@ -35,7 +35,7 @@ git commit PKGBUILD -m 'Automatic'
 
 echo 'push? (YES/no): '
 read q
-if [ "$q" = 'no' ]
+if [ ! "$q" = 'no' ] || [ "$q" = 'yes' ]
 then
   git push
 fi
