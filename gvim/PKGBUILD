@@ -24,6 +24,7 @@ sha1sums=('SKIP')
 prepare() {
   cd ${pkgbase}-repo
 
+  hg checkout "${_tag}"
   _latesttag=$(hg parents --template '{latesttag}' -r default)
   if (( $_tag != $_latesttag )); then
     printf 'You are not building the latest revision!\n'
