@@ -3,11 +3,16 @@
 
 cd src/vim-repo
 hg pull -u
-tag=$(hg tags | asort -k2 -o 1 -rn | grep '^v' | head -1 | tr '-' '.' | sed 's/^v//')
+
+tag=$(hg tags | asort -k2 -o 1 -rn | grep '^v' | head -1)
+lastver=$(echo "$tag" | tr '-' '.' | sed 's/^v//')
+
+hg checkout "$tag"
+
 cd - > /dev/null
 
-topver=$(echo "$tag" | awk -F. 'BEGIN{OFS="."} {print $1,$2}')
-patchlevel=$(echo "$tag" | awk -F. 'BEGIN{OFS="."} {print $3}')
+topver=$(echo "$lastver" | awk -F. 'BEGIN{OFS="."} {print $1,$2}')
+patchlevel=$(echo "$lastver" | awk -F. 'BEGIN{OFS="."} {print $3}')
 
 sed -i "s/^_topver=.*/_topver=$topver/" PKGBUILD
 sed -i "s/^_patchlevel=.*/_patchlevel=$patchlevel/" PKGBUILD
@@ -16,7 +21,7 @@ sysver=$(LC_ALL=C pacman -Qi gvim-python3 | grep Version | sed 's/.*: //' | sed 
 
 # 変更があるか？
 changed=$(git diff | wc -l)
-if [ "$changed" -eq 0 ] && [ "$sysver" = "$tag" ]
+if [ "$changed" -eq 0 ] && [ "$sysver" = "$lastver" ]
 then
   echo -e '\e[41mUp to date\e[0m'
   exit 0
