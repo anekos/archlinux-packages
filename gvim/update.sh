@@ -23,14 +23,14 @@ then
 fi
 
 
-echo "Current version: $topver$patchlevel"
+echo "Current version: $topver.$patchlevel"
 git diff --stat
 
 rm *.tar.xz
 
 makepkg -f
 
-sudo pacman -U gvim-python3-$topver$patchlevel-*.tar.xz vim-runtime-$topver$patchlevel*.tar.xz
+sudo pacman -U gvim-python3-$topver.$patchlevel-*.tar.xz vim-runtime-$topver.$patchlevel*.tar.xz
 
 git commit PKGBUILD -m 'Automatic'
 
