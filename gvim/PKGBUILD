@@ -24,8 +24,8 @@ sha1sums=('SKIP')
 prepare() {
   cd ${pkgbase}-repo
 
-  hg checkout "${_tag}"
-  echo hg checkout "${_tag}"
+  hg up -C "${_tag}"
+  echo hg up -C "${_tag}"
 
   _latesttag=$(hg parents --template '{latesttag}' -r default)
   if (( $_tag != $_latesttag )); then
@@ -44,6 +44,7 @@ prepare() {
   cd ..
   for pkg in ${pkgname[@]}
   do
+    rm -rf ${pkg}-build
     cp -a ${pkgbase}-repo ${pkg}-build
   done
 }
