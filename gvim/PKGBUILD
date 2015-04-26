@@ -26,7 +26,7 @@ prepare() {
 
   hg checkout "${_tag}"
   echo hg checkout "${_tag}"
-  exit 1
+
   _latesttag=$(hg parents --template '{latesttag}' -r default)
   if (( $_tag != $_latesttag )); then
     printf 'You are not building the latest revision!\n'
