@@ -9,7 +9,7 @@ cd - > /dev/null
 topver=$(echo "$tag" | awk -F. 'BEGIN{OFS="."} {print $1,$2}')
 patchlevel=$(echo "$tag" | awk -F. 'BEGIN{OFS="."} {print $3}')
 
-sed -i "s/^_topvar=.*/_topvar=$topver/" PKGBUILD
+sed -i "s/^_topver=.*/_topver=$topver/" PKGBUILD
 sed -i "s/^_patchlevel=.*/_patchlevel=$patchlevel/" PKGBUILD
 
 sysver=$(LC_ALL=C pacman -Qi gvim-python3 | grep Version | sed 's/.*: //' | sed 's/-.*//')
@@ -23,14 +23,14 @@ then
 fi
 
 
-echo "Current version: $topvar.$patchlevel"
+echo "Current version: $topver$patchlevel"
 git diff --stat
 
 rm *.tar.xz
 
 makepkg -f
 
-sudo pacman -U gvim-python3-$topvar.$patchlevel-*.tar.xz vim-runtime-$topvar.$patchlevel*.tar.xz
+sudo pacman -U gvim-python3-$topver$patchlevel-*.tar.xz vim-runtime-$topver$patchlevel*.tar.xz
 
 git commit PKGBUILD -m 'Automatic'
 
