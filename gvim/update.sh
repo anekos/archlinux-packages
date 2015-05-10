@@ -20,8 +20,7 @@ sed -i "s/^_patchlevel=.*/_patchlevel=$patchlevel/" PKGBUILD
 sysver=$(LC_ALL=C pacman -Qi gvim-python3 | grep Version | sed 's/.*: //' | sed 's/-.*//')
 
 # 変更があるか？
-changed=$(git diff | wc -l)
-if [ "$changed" -eq 0 ] && [ "$sysver" = "$lastver" ]
+if [ "$sysver" = "$lastver" ]
 then
   echo -e '\e[41mUp to date\e[0m'
   exit 0
