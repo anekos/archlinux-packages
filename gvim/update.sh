@@ -1,8 +1,16 @@
 #!/bin/bash
 
+set -e
 
-cd src/vim-repo
-hg pull -u
+if [ -d src/vim-repo ]
+then
+  cd src/vim-repo
+  hg pull -u
+else
+  mkdir src
+  cd src
+  hg clone 'https://vim.googlecode.com/hg' vim-repo
+fi
 
 tag=$(hg tags | asort -k2 -o 1 -rn | grep '^v' | head -1)
 lastver=$(echo "$tag" | tr '-' '.' | sed 's/^v//')
@@ -30,7 +38,7 @@ fi
 echo "Current version: $topver.$patchlevel"
 git diff --stat
 
-rm *.tar.xz
+rm *.tar.xz ||:
 
 makepkg -f
 
