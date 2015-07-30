@@ -1,6 +1,6 @@
 # Maintainer: anekos <anekos@snca.net>
 pkgname=my-fonts
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="My Selection Fonts"
 arch=('any')
@@ -25,6 +25,7 @@ source=( \
   'http://www.flopdesign.com/images/datafont/flopdesign-op/SmartFontUI.zip' \
   'http://www.marksimonson.com/assets/content/fonts/AnonymousPro-1.002.zip' \
   'genshingothic-20150116.7z::http://sourceforge.jp/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F7%2F7765%2Fgenshingothic-20150116.7z' \
+  'http://forsakenvirtues.com/fonts/NewBritanniaRunicDots.zip' \
 )
 sha256sums=( \
   '82a57387df7247712f88f0284fc742b226d80f02e03cbbdd45ac052fb08fa5e8' \
@@ -44,6 +45,7 @@ sha256sums=( \
   '839ec730a8946ae15b762302e44a5497c29c2e89e05672dfa93260f0c35dfa5c' \
   '86665847a51cdfb58a1e1dfd8b1ba33f183485affe50b53e3304f63d3d3552ab' \
   '30392f5a6749044f5f4580bbad21b90066e891ca4de5ed134f4e98aa19ac3b8a' \
+  'd57d86c166442da43041e68ec73cb10398845b1f7f9e73f8e08d285f70618175' \
 )
 
 install_font () {
