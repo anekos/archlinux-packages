@@ -1,0 +1,15 @@
+# Maintainer: anekos <anekos@snca.net>
+pkgname=gomi
+pkgver=0.1.6
+pkgrel=1
+pkgdesc="a simple trash tool that works on CLI, written in GoMy Selection Fonts"
+url="https://github.com/b4b4r07/gomi"
+arch=('x86_64')
+depends=()
+license=('MIT')
+source=("https://github.com/b4b4r07/gomi/releases/download/v${pkgver}/gomi_linux_amd64")
+sha256sums=('07111c5dadee7493f90481f4b2aa92d3ae8a02a326d1275e90840423f7f5b6d3')
+
+package() {
+  install -Dm755 gomi_linux_amd64 "${pkgdir}/usr/bin/gomi"
+}
