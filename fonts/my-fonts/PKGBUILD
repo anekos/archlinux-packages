@@ -1,6 +1,6 @@
 # Maintainer: anekos <anekos@snca.net>
 pkgname=my-fonts
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="My Selection Fonts"
 arch=('any')
@@ -46,9 +46,6 @@ sha256sums=( \
   'd57d86c166442da43041e68ec73cb10398845b1f7f9e73f8e08d285f70618175' \
 )
 
-#  'http://tanukiweb.sakura.ne.jp/download/yojo_1_00.zip' \
-#  'cc78e0707b4a3c7aee183f3c7806a29dd1b996f1dabbb9a79bf6d27d36a1a380' \
-
 install_font () {
   local filename="$(basename "$1")"
   local dest="${2:-$filename}"
@@ -70,7 +67,6 @@ install_font () {
 package() {
   install_font JiyunoTsubasa.ttf
   install_font TanukiMagic.ttf
-  #install_font yojo.ttf
   install_font UtsukushiMincho-FONT/TrueType/UtsukushiMincho.ttf
   install_font UtsukushiMincho-FONT/UtsukushiFONT.otf
   install_font FLOPDESIGN-FONT/TrueType/FLOPDesignFont.ttf
